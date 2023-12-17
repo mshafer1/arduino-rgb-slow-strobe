@@ -67,14 +67,15 @@ struct _rgb
 } rgb;
 
 short numPins = 3;
-short basePin = 9;
+short pins[3] = {3, 5, 6};
 
 void setup()
 {
     for (int i = 0; i < numPins; i++)
     {
-        pinMode(basePin + i, OUTPUT);
-        analogWrite(basePin + i, 0);
+        short current_pin = pins[i];
+        pinMode(current_pin, OUTPUT);
+        analogWrite(current_pin, 0);
     }
     Serial.begin(9600);
 }
@@ -96,7 +97,7 @@ void write_rgb(_rgb value)
     int values[3] = {value.red, value.green, value.blue};
     for (int i = 0; i < numPins; i++)
     {
-        analogWrite(basePin + i, values[i]);
+        analogWrite(pins[i], values[i]);
     }
     // Serial.print("  Writing:");
     // serial_log_value(value);
