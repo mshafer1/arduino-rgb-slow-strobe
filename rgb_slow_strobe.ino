@@ -67,7 +67,7 @@ struct _rgb
 } rgb;
 
 short numPins = 3;
-short pins[3] = {3, 5, 6};
+short pins[3] = {6, 5, 3};
 
 void setup()
 {
